@@ -1,0 +1,69 @@
+1) Create a vanilla redux app
+
+	1.1) Create a sample redux app as suggested below.
+	https://redux.js.org/introduction/installation 
+		Create a React Redux App
+			npx create-react-app my-app --template redux
+			
+	1.2) Delete all the source files (html|js|css) except public/index.html
+
+2) Add following code to index.html. We can even delete all the comments and meta header also.
+
+	<!doctype html>
+	<html lang="en">
+	  <head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Redux Counter Example</title>
+	  </head>
+	  <body>
+		<div id="root"></div>
+		<!--
+		  This HTML file is a template.
+		  If you open it directly in the browser, you will see an empty page.
+
+		  You can add webfonts, meta tags, or analytics to this file.
+		  The build step will place the bundled scripts into the <body> tag.
+
+		  To begin the development, run `npm start` in this folder.
+		  To create a production bundle, use `npm run build`.
+		-->
+	  </body>
+	</html>
+
+3) Add index.js to the src folder.
+src/index.js ==> Source code copied below.
+	import { createStore } from 'redux'
+
+	const counterReducer = (state = 0, action) => {
+		switch (action.type) {
+		  case 'INCREMENT':
+			return state + 1
+		  case 'DECREMENT':
+			return state - 1
+		  case 'ZERO':
+			return 0
+		  default: // if none of the above matches, code comes here
+		  return state
+		}
+	  }
+
+	const store = createStore(counterReducer)
+	store.subscribe(() => {
+		const storeNow = store.getState()
+		console.log("Inside From subscribe() ==>" + storeNow)
+	  })
+
+	console.log(store.getState())
+	store.dispatch({type: 'INCREMENT'})
+	store.dispatch({type: 'INCREMENT'})
+	store.dispatch({type: 'INCREMENT'})
+	console.log(store.getState())
+	store.dispatch({type: 'ZERO'})
+	store.dispatch({type: 'DECREMENT'})
+	console.log(store.getState())
+	
+4) Run the add using "npm start" command.
+
+5) Press F12 to open developer tools.
+Console logs from src/index.js can be seen here.
