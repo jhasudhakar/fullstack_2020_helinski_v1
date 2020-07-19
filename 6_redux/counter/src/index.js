@@ -1,43 +1,21 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { createStore } from 'redux'
+import noteReducer from './reducers/noteReducer'
+import runTests from './reducers/noteReducer.test'
 
-const counterReducer = (state = 0, action) => {
-  switch (action.type) {
-    case 'INCREMENT':
-      return state + 1
-    case 'DECREMENT':
-      return state - 1
-    case 'ZERO':
-      return 0
-    default:
-      return state
-  }
-}
-
-const store = createStore(counterReducer)
+const store = createStore(noteReducer)
 
 const App = () => {
-  return (
+  return(
     <div>
-      <div>
-        {store.getState()}
-      </div>
-      <button 
-        onClick={e => store.dispatch({ type: 'INCREMENT' })}
-      >
-        plus
-      </button>
-      <button
-        onClick={e => store.dispatch({ type: 'DECREMENT' })}
-      >
-        minus
-      </button>
-      <button 
-        onClick={e => store.dispatch({ type: 'ZERO' })}
-      >
-        zero
-      </button>
+      <ul>
+        {store.getState().map(note=>
+          <li key={note.id}>
+            {note.content} <strong>{note.important ? '[important]' : ''}</strong>
+          </li>
+        )}
+        </ul>
     </div>
   )
 }
@@ -47,5 +25,25 @@ const renderApp = () => {
   ReactDOM.render(<App />, document.getElementById('root'))
 }
 
-renderApp()
+renderApp();
 store.subscribe(renderApp)
+
+store.dispatch({
+  type: 'NEW_NOTE',
+  data: {
+    content: 'Note 1: the app state is in redux store',
+    important: true,
+    id: 1
+  }
+})
+
+store.dispatch({
+  type: 'NEW_NOTE',
+  data: {
+    content: 'Note 2: state changes are made with actions',
+    important: false,
+    id: 2
+  }
+})
+
+//runTests('all tests passed');
