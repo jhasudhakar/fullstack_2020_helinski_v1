@@ -5,28 +5,6 @@ import noteReducer from './reducers/noteReducer'
 import App from './App'
 import runTests from './reducers/noteReducer.test'
 
-//const store = createStore(noteReducer)
-
-/*
-const App = () => {
-  return(
-    <div>
-      <ul>
-        {store.getState().map(note=>
-          <li key={note.id}>
-            {note.content} <strong>{note.important ? '[important]' : ''}</strong>
-          </li>
-        )}
-        </ul>
-    </div>
-  )
-}
-*/
-
-//==============================================
-
-//===============================================
-
 const store = createStore(noteReducer)
 
 const renderApp = () => {

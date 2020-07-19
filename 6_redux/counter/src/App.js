@@ -10,7 +10,6 @@ const generateId = () =>
 Number((Math.random() * 1000000).toFixed(0))
 
 const App = (props) => {
-//class App extends Component {
 
     const addNote = (event) => {
     event.preventDefault()
