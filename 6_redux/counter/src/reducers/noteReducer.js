@@ -2,9 +2,8 @@
 const noteReducer = (state = [], action) => {
     switch(action.type) {
       case 'NEW_NOTE':
-        //return state.concat(action.data)
-        state.push(action.data);
-        return state;
+        return state.concat(action.data)
+        //state.push(action.data); return state;
       case 'TOGGLE_IMPORTANCE': {
         const id = action.data.id
         const noteToChange = state.find(n => n.id === id)

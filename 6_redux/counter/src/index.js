@@ -33,4 +33,4 @@ store.dispatch({
   }
 })
 
-//runTests('all tests passed');
+runTests('all tests passed');
