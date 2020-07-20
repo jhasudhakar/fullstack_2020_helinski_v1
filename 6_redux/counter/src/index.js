@@ -1,36 +1,18 @@
+// Github URL: https://github.com/fullstack-hy2020/redux-notes/tree/part6-1
+
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { createStore } from 'redux'
-import noteReducer from './reducers/noteReducer'
+import { Provider } from 'react-redux'
 import App from './App'
-import runTests from './reducers/noteReducer.test'
+import noteReducer from './reducers/noteReducer'
 
 const store = createStore(noteReducer)
 
-const renderApp = () => {
-  console.log(store.getState());
-  ReactDOM.render(<App store={store} />, document.getElementById('root'))
-}
+ReactDOM.render(
+  <Provider store={store}>
+    <App store={store}/>
+  </Provider>,
+  document.getElementById('root')
+)
 
-renderApp();
-store.subscribe(renderApp)
-
-store.dispatch({
-  type: 'NEW_NOTE',
-  data: {
-    content: 'Note 1: the app state is in redux store',
-    important: true,
-    id: 1
-  }
-})
-
-store.dispatch({
-  type: 'NEW_NOTE',
-  data: {
-    content: 'Note 2: state changes are made with actions',
-    important: false,
-    id: 2
-  }
-})
-
-runTests('all tests passed');
