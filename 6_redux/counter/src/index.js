@@ -2,6 +2,7 @@
 /*
 Following link has code for 6.1 part of redux tutorial in FullStack course.
   https://github.com/fullstack-hy2020/redux-notes/tree/part6-1
+  https://github.com/fullstack-hy2020/redux-notes/tree/part6-2
 */
 import React from 'react'
 import ReactDOM from 'react-dom'
