@@ -12,6 +12,7 @@ const NewNote = (props) => {
     dispatch(createNote(content))
   }
 
+  console.log("Rendering ***NewNote*** component");
   return (
     <form onSubmit={addNote}>
       <input name="note" />
