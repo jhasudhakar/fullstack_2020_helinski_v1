@@ -16,6 +16,9 @@ import filterReducer from './reducers/filterReducer'
 import { createNote } from './reducers/noteReducer'
 import { filterChange } from './reducers/filterReducer'
 
+
+import noteService from './services/notes'
+
 const reducer = combineReducers({
   notes: noteReducer,
   filter: filterReducer,
@@ -32,6 +35,13 @@ ReactDOM.render(
 )
 
 store.subscribe(() => console.log(store.getState()))
+
+noteService.getAll().then(notes =>
+  notes.forEach(note => {
+    store.dispatch({ type: 'NEW_NOTE', data: note })
+  })
+)
+
 //store.dispatch(filterChange('IMPORTANT'))
 store.dispatch(filterChange('ALL'))
 store.dispatch(createNote('combineReducers forms one reducer from many simple reducers'))
