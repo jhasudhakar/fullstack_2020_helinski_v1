@@ -15,6 +15,8 @@ const noteReducer = (state = [], action) => {
       case 'NEW_NOTE':
         return state.concat(action.data)
         //state.push(action.data); return state;
+      case 'INIT_NOTES':
+        return action.data
       case 'TOGGLE_IMPORTANCE': {
         const id = action.data.id
         console.log(state);
@@ -62,6 +64,13 @@ export const toggleImportanceOf = (id) => {
   return {
     type: 'TOGGLE_IMPORTANCE',
     data: { id }
+  }
+}
+
+export const initializeNotes = (notes) => {
+  return {
+    type: 'INIT_NOTES',
+    data: notes,
   }
 }
 

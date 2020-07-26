@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux'
 const VisibilityFilter = (props) => {
   const dispatch = useDispatch()
 
-    console.log("Rendering VisibilityFilter component");
+    console.log("Rendering ***VisibilityFilter*** component");
     return (
     <div>
       all    

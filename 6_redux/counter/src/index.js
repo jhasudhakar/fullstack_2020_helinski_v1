@@ -10,7 +10,8 @@ import ReactDOM from 'react-dom'
 import { createStore, combineReducers } from 'redux'
 import { Provider } from 'react-redux'
 import App from './App'
-import noteReducer from './reducers/noteReducer'
+
+import noteReducer, { initializeNotes } from './reducers/noteReducer'
 import filterReducer from './reducers/filterReducer'
 
 import { createNote } from './reducers/noteReducer'
@@ -36,12 +37,14 @@ ReactDOM.render(
 
 store.subscribe(() => console.log(store.getState()))
 
-noteService.getAll().then(notes =>
-  notes.forEach(note => {
-    store.dispatch({ type: 'NEW_NOTE', data: note })
-  })
+
+noteService.getAll().then(notes => {
+  console.log("Dispatching initilization notes");
+  store.dispatch(initializeNotes(notes))
+  }
 )
 
 //store.dispatch(filterChange('IMPORTANT'))
 store.dispatch(filterChange('ALL'))
+console.log("Dispatching Sample new note");
 store.dispatch(createNote('combineReducers forms one reducer from many simple reducers'))

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { toggleImportanceOf } from '../reducers/noteReducer'
 
 const Note = ({ note, handleClick }) => {
-  console.log("Rendering <Note> component");
+  console.log("Rendering ***Note*** component");
   return(
     <li onClick={handleClick}>
       {note.content} 
@@ -35,7 +35,7 @@ const Notes = () => {
   })
 */
 
-  console.log("Rendering <Notes> component");
+  console.log("Rendering ***Notes*** component");
 
   return(
     <ul>
