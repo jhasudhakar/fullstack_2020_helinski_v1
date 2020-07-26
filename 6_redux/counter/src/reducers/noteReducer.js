@@ -49,6 +49,7 @@ const generateId = () => {
 const generateId = () =>
   Number((Math.random() * 1000000).toFixed(0))
 
+/*
 export const createNote = (content) => {
   return {
     type: 'NEW_NOTE',
@@ -57,6 +58,13 @@ export const createNote = (content) => {
       important: false,
       id: generateId()
     }
+  }
+}
+*/
+export const createNote = (data) => {
+  return {
+    type: 'NEW_NOTE',
+    data,
   }
 }
 
